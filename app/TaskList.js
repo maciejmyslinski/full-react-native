@@ -8,7 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import TaskRow from './TaskRow';
+import TaskRow from './TaskRow/TaskRow';
 
 const styles = StyleSheet.create({
   button: {
