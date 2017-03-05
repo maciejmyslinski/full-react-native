@@ -48,6 +48,12 @@ class App extends React.Component {
       });
     };
 
+    this.onToggle = () => {
+      store.dispatch({
+        type: 'TOGGLE_STATE',
+      });
+    };
+
     this.renderScene = (route) => {
       switch (route.name) {
         case 'taskform':
@@ -63,6 +69,8 @@ class App extends React.Component {
               onAddStarted={this.onAddStarted}
               todos={this.state.todos}
               onDone={this.onDone}
+              filter={this.state.filter}
+              onToggle={this.onToggle}
             />
           );
       }
