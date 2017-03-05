@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import TaskList from './TaskList';
 import TaskForm from './TaskForm';
+import store from '../todoStore';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,16 +19,10 @@ const styles = StyleSheet.create({
 class App extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      todos: [
-        {
-          task: 'Learn React Native',
-        },
-        {
-          task: 'Another todo',
-        },
-      ],
-    };
+    this.state = store.getState();
+    store.subscribe(() => {
+      this.setState(store.getState());
+    });
     this.onAddStarted = () => {
       this.nav.push({
         name: 'taskform',
@@ -39,8 +34,10 @@ class App extends React.Component {
     };
 
     this.onAdd = (task) => {
-      this.state.todos.push({ task });
-      this.setState({ todos: this.state.todos });
+      store.dispatch({
+        type: 'ADD_TODO',
+        task,
+      });
       this.nav.pop();
     };
 
