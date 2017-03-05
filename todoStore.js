@@ -18,6 +18,10 @@ function todoStore(state = defaultState, action) {
           task: action.task,
         }]),
       });
+    case 'DONE_TODO':
+      return Object.assign({}, state, {
+        todos: state.todos.filter(todo => todo !== action.todo),
+      });
     default:
       return state;
   }

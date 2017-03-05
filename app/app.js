@@ -42,10 +42,10 @@ class App extends React.Component {
     };
 
     this.onDone = (todo) => {
-      const filteredTodos =
-      this.state.todos.filter(filterTodo =>
-        filterTodo !== todo);
-      this.setState({ todos: filteredTodos });
+      store.dispatch({
+        type: 'DONE_TODO',
+        todo,
+      });
     };
 
     this.renderScene = (route) => {
