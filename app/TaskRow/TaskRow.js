@@ -9,12 +9,7 @@ import Render from './Render';
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    borderWidth: 1,
-    borderColor: '#f7f7f7',
     padding: 20,
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     marginBottom: 20,
     marginLeft: 20,
     marginRight: 20,

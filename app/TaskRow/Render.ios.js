@@ -3,22 +3,43 @@ import React from 'react';
 import {
   View,
   Text,
-  TouchableHighlight,
+  StyleSheet,
 } from 'react-native';
 
-export default function render(styles) {
-  return (
-    <View style={styles.container}>
-      <Text
-        style={styles.label}
-      >ios: {this.props.todo.task}</Text>
+import SwipeoutButton from 'react-native-swipeout';
 
-      <TouchableHighlight
-        style={styles.doneButton}
-        onPress={this.onDonePressed}
+const localStyle = StyleSheet.create({
+  row: {
+    marginBottom: 0,
+    marginLeft: 0,
+    marginRight: 0,
+  },
+  container: {
+    marginBottom: 20,
+  },
+});
+
+export default function render(baseStyle) {
+  const button = [
+    {
+      text: 'Done',
+      onPress: this.onDonePressed.bind(this),
+    },
+  ];
+
+  return (
+    <View style={localStyle.container}>
+      <SwipeoutButton
+        right={button}
       >
-        <Text>Done</Text>
-      </TouchableHighlight>
+        <View style={[baseStyle.container, localStyle.row]}>
+          <Text
+            style={baseStyle.label}
+          >
+            ios: {this.props.todo.task}
+          </Text>
+        </View>
+      </SwipeoutButton>
     </View>
   );
 }
